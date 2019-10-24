@@ -1,35 +1,4 @@
-<!--
-    Canvas Drawing -- Emerging Technologies Project 2019
-    Author -- Morgan Reilly G00303598
-    References:
-        * https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial
-        * https://stackoverflow.com/questions/2368784/draw-on-html5-canvas-using-a-mouse
--->
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>MNIST Input</title>
-</head>
-
-<style type="text/css">
-    canvas {
-        border-style: solid;
-        background-color: black;
-    }
-</style>
-
-<body onload="init()">
-    <canvas id="canvasMNIST" width="500" height="500"></canvas>
-    <img id="canvasimg" style="position:absolute;top:10%;left:52%;" style="display:none;">
-    <!--<input type="button" value="save" id="btn" size="30" onclick="save()" style="position:absolute;top:55%;left:5%;"> -->
-    <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:55%;left:10%;">
-    <!-- <a id="link">Download image</a> -->
-</body>
-
-<script>
-    var canvas, ctx, flag = false,
+var canvas, ctx, flag = false,
         prevX = 0,
         currX = 0,
         prevY = 0,
@@ -118,6 +87,3 @@
             }
         }
     }
-</script>
-
-</html>

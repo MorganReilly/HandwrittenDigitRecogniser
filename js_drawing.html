@@ -1,0 +1,44 @@
+<!--
+    Canvas Drawing -- Emerging Technologies Project 2019
+    Author -- Morgan Reilly G00303598
+    References:
+        * https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>MNIST Input</title>
+</head>
+
+<style type="text/css">
+    h1 {
+        color: black;
+    }
+
+    canvas {
+        border-style: solid;
+        background-color: black;
+    }
+</style>
+
+<body onload="draw();">
+    <canvas id="canvasExample" width="500" height="500"></canvas>
+    <h1>MNIST Input</h1>
+</body>
+
+<script>
+    function draw() {
+        var canvas = document.getElementById('canvasExample');
+
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+            // drawing code here
+        } else {
+            // Canvas-unsupported code
+        }
+    }
+</script>
+
+</html>

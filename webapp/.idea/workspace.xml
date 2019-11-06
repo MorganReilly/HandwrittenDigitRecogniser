@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6a0e147-9af4-43cb-ac55-e56d29402270" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webapp.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/mnist-input.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/mnist-input.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/mnist-input.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MNIST_WebInput/css/mnist-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MNIST_WebInput/js/mnist-draw-js.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MNIST_WebInput/js_drawing.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../keras-mnist-nn.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../keras-mnist-nn.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../keras.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mnist.png" beforeDir="false" />
-    </list>
+    <list default="true" id="a6a0e147-9af4-43cb-ac55-e56d29402270" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,8 +55,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="983" />
-    <option name="y" value="27" />
+    <option name="x" value="982" />
+    <option name="y" value="1051" />
     <option name="width" value="937" />
     <option name="height" value="1053" />
   </component>
@@ -184,23 +170,22 @@
       <workItem from="1573059433938" duration="487000" />
       <workItem from="1573060100363" duration="464000" />
       <workItem from="1573061073426" duration="41000" />
-      <workItem from="1573061120200" duration="399000" />
+      <workItem from="1573061120200" duration="999000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1391000" />
+    <option name="totallyTimeSpent" value="1991000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="983" y="27" width="937" height="1053" extended-state="4" />
-    <editor active="true" />
+    <frame x="982" y="1051" width="937" height="1053" extended-state="4" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26599327" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3293348" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3293348" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

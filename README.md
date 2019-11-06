@@ -1,5 +1,7 @@
 # Emerging Technologies
-## Handwritten Image Recognition with Keras and the MNIST dataset
+# _Handwritten Image Recognition with Keras and MNIST_
+
+![logo](images/keras.png) ![mnist](images/mnist.png)
 
 ## Environment Setup
 * download requirments.txt

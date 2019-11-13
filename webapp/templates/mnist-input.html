@@ -13,13 +13,16 @@
     <title>MNIST Input</title>
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/mnist-input.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 
 <body onload="init()">
 <canvas id="canvasMNIST" width="500" height="500"></canvas>
 <img id="canvasimg" style="position:absolute;top:10%;left:52%;" style="display:none;">
 <!--<input type="button" value="save" id="btn" size="30" onclick="save()" style="position:absolute;top:55%;left:5%;"> -->
-<input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:55%;left:10%;">
+<input type="button" value="Clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:55%;left:0;">
+<input type="button" value="Publish" id="publish" size="23" onclick="publish()"
+       style="position:absolute;top:55%;left:10%;">
 <!-- <a id="link">Download image</a> -->
 </body>
 

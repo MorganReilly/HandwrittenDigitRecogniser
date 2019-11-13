@@ -6,6 +6,7 @@ from PIL import Image
 # https://www.base64encoder.io/python/
 # https://stackoverflow.com/questions/41256733/regex-to-extract-multiple-base64-encoded-image-from-string
 # https://stackoverflow.com/questions/31410525/base64-uri-to-png-python
+# https://stackoverflow.com/questions/16214190/how-to-convert-base64-string-to-image
 
 app = Flask(__name__)
 
@@ -34,10 +35,9 @@ def upload_digit():
     b64_bytes = base64.b64decode(image_data)
     image = io.BytesIO(b64_bytes)
 
-    image.save("whatever.png")
-
-
-    # save image as a png
+    filename = 'digit_input.png'
+    with open(filename, 'wb') as f:
+        f.write(b64_bytes)
 
     return "null"
 

@@ -14,7 +14,7 @@ def app_home():
 
 @app.route('/upload', methods=['POST'])
 def upload_digit():
-    ### Using these references ###
+    # Using these references
     # 1 https://www.base64encoder.io/python/
     # 2 https://stackoverflow.com/questions/41256733/regex-to-extract-multiple-base64-encoded-image-from-string
     # 3 https://stackoverflow.com/questions/31410525/base64-uri-to-png-python
@@ -40,10 +40,10 @@ def upload_digit():
 
     # Convert the image to greyscale
     img = Image.open('digit_input.png').convert('L')
-    img.save('digit_input_grey.png')
+    img.save('digit_input_grey.png')  # Save the greyscale image
 
     # need to store image in an array
-    # mnist read them in this way
+    # MNIST read them in this way
     # need to match shape defined in model
 
     return "null"  # change this later ?

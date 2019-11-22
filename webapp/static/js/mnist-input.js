@@ -44,7 +44,7 @@ function erase() {
 }
 
 // Sending the canvas image to Flask
-function publish() {
+function send() {
     var canvas = document.getElementById("canvasMNIST");
     var dataURL = canvas.toDataURL();
 
@@ -58,21 +58,6 @@ function publish() {
     }).done(function(e){
         console.log("DONE");
     })
-}
-
-
-function save() {
-    //Method #1
-    //document.getElementById("canvasimg").style.border = "2px solid";
-    //var dataURL = canvas.toDataURL();
-    //document.getElementById("canvasimg").src = dataURL;
-    //document.getElementById("canvasimg").style.display = "inline";
-
-    // Method #2
-    //var link = document.getElementId('link');
-    //link.setAttribute('download', 'MNIST.png');
-    //link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-    //link.click
 }
 
 function findxy(res, e) {

@@ -1,4 +1,21 @@
+#canvas{
+    border-color: blueviolet;
+    border-style: solid;
+}
+
 canvas {
     border-style: solid;
     background-color: black;
+}
+
+#title {
+    border-color: blueviolet;
+    border-style: solid;
+}
+
+#buttons {
+    padding: 0, 100, 0, 0;
+    border-color: blueviolet;
+    border-style: solid;
+    float: right;
 }

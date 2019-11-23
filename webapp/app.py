@@ -2,28 +2,30 @@
 # Emerging Technologies -- 2019
 
 # References
-# https://www.base64encoder.io/python/
-# https://stackoverflow.com/questions/41256733/regex-to-extract-multiple-base64-encoded-image-from-string
-# https://stackoverflow.com/questions/31410525/base64-uri-to-png-python
-# https://stackoverflow.com/questions/16214190/how-to-convert-base64-string-to-image
-# https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
-# https://machinelearningmastery.com/save-load-keras-deep-learning-models/#
-# https://dev.to/preslavrachev/python-resizing-and-fitting-an-image-to-an-exact-size-13ic
+# 1 https://www.base64encoder.io/python/
+# 2 https://stackoverflow.com/questions/41256733/regex-to-extract-multiple-base64-encoded-image-from-string
+# 3 https://stackoverflow.com/questions/31410525/base64-uri-to-png-python
+# 4 https://stackoverflow.com/questions/16214190/how-to-convert-base64-string-to-image
+# 5 https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
 
 # Imports 
 from flask import Flask, render_template, request
 import io, base64
 import re
 import cv2
-from keras.models import model_from_json
+import numpy as np
+from keras.models import model_from_json, load_model
 from PIL import Image, ImageOps
 
 # Flask instance
 app = Flask(__name__) 
 
- # Previously trained model
-loaded_model.load_weights("model.h5")
-print("Model loaded from disk")
+# Previously trained model
+try:
+    model = load_model('model.h5')
+    print("Model loaded from disk")
+except:
+    print("Error Loading Model From Disk")
 
 # Re-size image
 imHeight = 28 
@@ -38,6 +40,7 @@ def app_home():
 # Route to canvas and to upload
 @app.route('/upload', methods=['POST'])
 def upload_digit():
+    print("HERE!")
     ajax_string = request.values['imageString']  # Store string that's sent from Ajax call
     # print(ajax_string)  # Non regex - Debugging
 
@@ -66,13 +69,21 @@ def upload_digit():
 
     # Save resized image
     fit_and_resized_image.save('digit-28-28.png')
-
     
     # Need to store image in an array
     # MNIST reads them in this way
     digit_28_28_array = np.array(fit_and_resized_image).reshape(1,28,28,1)
+    
 
-    return "null"  # Return predicted digit
+    # Need to send and receive prediction to model
+    sendPrediction = model.predict(digit_28_28_array)
+    recievePrediction = np.array(sendPrediction[0])
+
+    # Need to store the response as a String
+    prediction = str(np.argmax(recievePrediction))
+    print(prediction)
+
+    return prediction # Return predicted digit
 
 
 if __name__ == '__main__':

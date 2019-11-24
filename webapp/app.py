@@ -8,34 +8,31 @@
 # 4 https://stackoverflow.com/questions/16214190/how-to-convert-base64-string-to-image
 # 5 https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
 
-# Imports 
+# Imports
 from flask import Flask, render_template, request
-import io, base64
+from keras.models import model_from_json
+import base64
 import re
-import cv2
 import numpy as np
-from keras.models import model_from_json, load_model
+import tensorflow as tf
+from keras.models import load_model
 from PIL import Image, ImageOps
 
+print(tf.__version__)
 # Flask instance
-app = Flask(__name__) 
-
-# Previously trained model
-try:
-    model = load_model('model.h5')
-    print("Model loaded from disk")
-except:
-    print("Error Loading Model From Disk")
+app = Flask(__name__)
 
 # Re-size image
-imHeight = 28 
+imHeight = 28
 imWidth = 28
 size = imHeight, imWidth  # image size for model
+
 
 # Defualt route
 @app.route('/')
 def app_home():
     return render_template('mnist-input.html')
+
 
 # Route to canvas and to upload
 @app.route('/upload', methods=['POST'])
@@ -69,21 +66,42 @@ def upload_digit():
 
     # Save resized image
     fit_and_resized_image.save('digit-28-28.png')
-    
+
     # Need to store image in an array
     # MNIST reads them in this way
-    digit_28_28_array = np.array(fit_and_resized_image).reshape(1,28,28,1)
-    
+    digit_28_28_array = np.array(fit_and_resized_image).reshape(1, 28, 28, 1)
+
+    model = load_saved_model()
 
     # Need to send and receive prediction to model
+    print("Before sendPrediction")
     sendPrediction = model.predict(digit_28_28_array)
+    print("After sP, before rP")
     recievePrediction = np.array(sendPrediction[0])
+    print("After rP")
 
     # Need to store the response as a String
     prediction = str(np.argmax(recievePrediction))
     print(prediction)
 
-    return prediction # Return predicted digit
+    return prediction  # Return predicted digit
+
+
+def load_saved_model():
+    # Try to load the model
+    try:
+        # Load json file and create new model
+        json_to_open = open('model.json', 'r')
+        loaded_json_model = json_to_open.read()
+        json_to_open.close()
+        model = model_from_json(loaded_json_model)
+
+        # Load weights into new model
+        model.load_weights("model.h5")
+        print("Loaded from disk")
+    except:
+        print("ERROR: Could Not Load Model")
+    return model
 
 
 if __name__ == '__main__':

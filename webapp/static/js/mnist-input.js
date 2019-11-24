@@ -1,3 +1,6 @@
+// Image URL for POST
+var url = "localhost:5000/"
+
 var canvas, ctx, flag = false,
     prevX = 0,
     currX = 0,
@@ -57,7 +60,8 @@ function send() {
         data: {imageString: dataURL}
     }).done(function(e){
         console.log("DONE");
-    })
+        $("#prediction").empty().append(e);
+    });
 }
 
 function findxy(res, e) {

@@ -5,13 +5,14 @@
 # Imports
 import keras
 import math
-
 from keras.datasets import mnist
-from keras.engine.saving import load_model
+from keras.models import model_from_json
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D
 from keras import backend as K
 from keras.layers.normalization import BatchNormalization
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior() 
 
 print("Keras Version " + keras.__version__)
 
@@ -116,13 +117,21 @@ learningrate_decay_callback = keras.callbacks.callbacks.LearningRateScheduler(le
 
 # Try to load the model
 try:
-    model = load_model("model.h5")
-    print("Model loaded successfully")
+    # Load json file and create new model
+    json_to_open = open('model.json', 'r')
+    loaded_json_model = json_to_open.read()
+    json_to_open.close()
+    model = model_from_json(loaded_json_model)
+
+    # Load weights into new model
+    model.load_weights("model.h5")
+    print("Loaded from disk")
 except:
     print("ERROR: Could Not Load Model")
     print("Creating New Model")
     model_history = model.fit(X_train, Y_train, batch_size, epochs, verbose=1,
-                              validation_data=(X_test, Y_test), callbacks=[learningrate_decay_callback])
+                              validation_data=(X_test, Y_test), callbacks=[learningrate_decay_callback],
+                              workers=0)
 
     # Adapted from: https://machinelearningmastery.com/save-load-keras-deep-learning-models/#
     # Serialize model to JSON.

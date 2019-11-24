@@ -3,8 +3,11 @@
 # Emerging Technologies -- 2019
 
 # Imports
+import timeit
+
 import keras
 import math
+import time
 from keras.datasets import mnist
 from keras.models import model_from_json
 from keras.models import Sequential
@@ -12,7 +15,8 @@ from keras.layers import Dense, Dropout, Flatten, Conv2D
 from keras import backend as K
 from keras.layers.normalization import BatchNormalization
 import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior() 
+
+tf.disable_v2_behavior()
 
 print("Keras Version " + keras.__version__)
 
@@ -113,7 +117,7 @@ def learningrate_decay(epoch):
 
 
 # learning rate schedule callback
-learningrate_decay_callback = keras.callbacks.callbacks.LearningRateScheduler(learningrate_decay, verbose=True)
+learningrate_decay_callback = keras.callbacks.LearningRateScheduler(learningrate_decay, verbose=True)
 
 # Try to load the model
 try:
@@ -126,13 +130,15 @@ try:
     # Load weights into new model
     model.load_weights("model.h5")
     print("Loaded from disk")
-except:
+except():
     print("ERROR: Could Not Load Model")
     print("Creating New Model")
-    model_history = model.fit(X_train, Y_train, batch_size, epochs, verbose=1,
-                              validation_data=(X_test, Y_test), callbacks=[learningrate_decay_callback],
-                              workers=0)
-
+    start = timeit.timeit()  # Keeping track of how long it takes to train
+    model = model.fit(X_train, Y_train, batch_size, epochs, verbose=1,
+                      validation_data=(X_test, Y_test), callbacks=[learningrate_decay_callback],
+                      workers=0)
+    end = timeit.timeit()
+    print("Duration to create model: ", end - start)
     # Adapted from: https://machinelearningmastery.com/save-load-keras-deep-learning-models/#
     # Serialize model to JSON.
     model_json = model.to_json()
@@ -141,4 +147,4 @@ except:
 
     # Serialize weights to HDF5
     model.save_weights("model.h5")
-    print("Model saved sucessfully")
+    print("Model saved successfully")

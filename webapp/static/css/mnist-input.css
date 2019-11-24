@@ -1,14 +1,11 @@
-#canvas{
-    border-color: blueviolet;
-    border-style: solid;
-}
-
 canvas {
-    border-style: solid;
     background-color: black;
 }
 
-#title {
+.center_divs {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
     border-color: blueviolet;
     border-style: solid;
 }

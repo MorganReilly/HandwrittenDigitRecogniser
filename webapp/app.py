@@ -15,7 +15,6 @@ import base64
 import re
 import numpy as np
 import tensorflow as tf
-from keras.models import load_model
 from PIL import Image, ImageOps
 
 print(tf.__version__)
@@ -37,7 +36,6 @@ def app_home():
 # Route to canvas and to upload
 @app.route('/upload', methods=['POST'])
 def upload_digit():
-    print("HERE!")
     ajax_string = request.values['imageString']  # Store string that's sent from Ajax call
     # print(ajax_string)  # Non regex - Debugging
 
@@ -48,10 +46,10 @@ def upload_digit():
     print(image_data)  # This is the regex-ed image data
 
     # Converting base64 to image (using ref 4.)
-    decodedImage = base64.b64decode(image_data)
+    decoded_image = base64.b64decode(image_data)
     digit_input = 'digit_input.png'
     with open(digit_input, 'wb') as f:
-        f.write(decodedImage)
+        f.write(decoded_image)
 
     # Convert the image to greyscale
     img = Image.open('digit_input.png').convert('L')
@@ -61,7 +59,6 @@ def upload_digit():
     # https://dev.to/preslavrachev/python-resizing-and-fitting-an-image-to-an-exact-size-13ic
     # To do this we need to resize the image
     original_image = Image.open('digit_input_grey.png')
-    size = (28, 28)
     fit_and_resized_image = ImageOps.fit(original_image, size, Image.ANTIALIAS)
 
     # Save resized image
@@ -74,14 +71,11 @@ def upload_digit():
     model = load_saved_model()
 
     # Need to send and receive prediction to model
-    print("Before sendPrediction")
-    sendPrediction = model.predict(digit_28_28_array)
-    print("After sP, before rP")
-    recievePrediction = np.array(sendPrediction[0])
-    print("After rP")
+    send_prediction = model.predict(digit_28_28_array)
+    receive_prediction = np.array(send_prediction[0])
 
     # Need to store the response as a String
-    prediction = str(np.argmax(recievePrediction))
+    prediction = str(np.argmax(receive_prediction))
     print(prediction)
 
     return prediction  # Return predicted digit
@@ -99,9 +93,10 @@ def load_saved_model():
         # Load weights into new model
         model.load_weights("model.h5")
         print("Loaded from disk")
-    except:
-        print("ERROR: Could Not Load Model")
-    return model
+    except():
+        print("Model failed successfully")
+    finally:
+        return model
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 // Image URL for POST
 var url = "localhost:5000/"
 
+// Canvas creation variables
 var canvas, ctx, flag = false,
     prevX = 0,
     currX = 0,
@@ -8,6 +9,7 @@ var canvas, ctx, flag = false,
     currY = 0,
     dot_flag = false;
 
+// Draw colour and size of pen
 var x = "white",
     y = 8;
 
@@ -43,7 +45,8 @@ function draw() {
 
 function erase() {
     ctx.clearRect(0, 0, w, h);
-    document.getElementById("canvasimg").style.display = "none";
+    document.getElementById("canvas_img").style.display = "none";
+    //document.getElementById("prediction").style.display = "none";
 }
 
 // Sending the canvas image to Flask

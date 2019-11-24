@@ -21,19 +21,19 @@
 
 <body onload="init()">
     <!-- Title -->
-    <div id="title" class="title">
+    <div id="title" class="center_divs">
         <h1>DIGIT RECOGNISER</h1>
         <h2>MNIST | KERAS</h2>
     </div>
 
     <!-- Canvas -->
-    <div id="canvas" class="canvas">
-        <canvas id="canvasMNIST" width="400" height="400"></canvas>
-        <img id="canvasimg">
+    <div id="canvas" class="center_divs">
+        <canvas id="canvasMNIST" width="400", height="400"></canvas>
+        <img id="canvas_img">
     </div>
 
     <!-- Buttons -->
-    <div id="buttons" class="buttons">
+    <div id="buttons" class="center_divs">
         <button type="button" class="btn btn-info" id="clr" onclick="erase()">Erase Canvas</button>
         <form method="POST">
             <button type="button" class="btn btn-info" id="publish" onclick="send()">Make Prediction</button>
@@ -41,7 +41,7 @@
     </div>
 
     <!-- Prediction -->
-    <div>
+    <div class="center_divs" align="horizontal">
         <h2>Prediction: </h2>
         <p id="prediction"></p>
     </div> 

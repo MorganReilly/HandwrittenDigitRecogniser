@@ -9,7 +9,6 @@
 # 5 https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
 
 # Imports
-import cv2
 from flask import Flask, render_template, request
 from keras.models import model_from_json
 import base64
@@ -37,39 +36,16 @@ def app_home():
 # Route to canvas and to upload
 @app.route('/upload', methods=['POST'])
 def upload_digit():
-    ajax_string = request.values['imageString']  # Store string that's sent from Ajax call
-
-    # print(ajax_string)  # Non regex - Debugging
-
-    # When the image is sent we need to remove the initial part
-    # of the message sent
-    # Using regex to cut first part of image data sent
-    image_data = re.sub('^data:image/.+;base64,', '', ajax_string)
-    print(image_data)  # This is the regex-ed image data
-
-    # Converting base64 to image (using ref 4.)
-    decoded_image = base64.b64decode(image_data)
-    digit_input = 'digit_input.png'
-    with open(digit_input, 'wb') as f:
-        f.write(decoded_image)
-
-    # Convert the image to greyscale
-    img = Image.open('digit_input.png').convert('L')
-    img.save('digit_input_grey.png')  # Save the greyscale image
-
-    # Need to match shape defined in model => 28 x 28
-    # https://dev.to/preslavrachev/python-resizing-and-fitting-an-image-to-an-exact-size-13ic
-    # To do this we need to resize the image
-    original_image = Image.open('digit_input_grey.png')
-    fit_and_resized_image = ImageOps.fit(original_image, DIM, Image.ANTIALIAS)
-
-    # Save resized image
-    fit_and_resized_image.save('digit-28-28.png')
-
-    # Need to store image in an array
-    # MNIST reads them in this way
-    img = Image.open('digit-28-28.png')
-    digit_28_28_array = np.array(img).reshape(1, WIDTH, HEIGHT, 1)
+    # Need to retrieve the image url string
+    # Then need to cut the base64 out of it using a regex string
+    # Then need to convert the base64 to an image
+    convert_b64_to_image()
+    # We then convert the image to greyscale
+    convert_img_to_greyscale()
+    # We then need to rescale the image to 28 * 28 to match the model
+    fit_img_to_model()
+    # Store the image in an array with resized dimensions
+    digit_28_28_array = store_as_array()
 
     # Load the model from memory
     model = load_saved_model()
@@ -80,9 +56,54 @@ def upload_digit():
 
     # Need to store the response as a String
     prediction = str(np.argmax(receive_prediction))
-    print(prediction)
+    print("Model Predicted: ", prediction)
 
     return prediction  # Return predicted digit
+
+
+def get_image_string():
+    ajax_string = request.values['imageString']  # Store string that's sent from Ajax call
+    # print(ajax_string)  # Non regex - Debugging
+
+    # When the image is sent we need to remove the initial part
+    # of the message sent
+    # Using regex to cut first part of image data sent
+    image_data = re.sub('^data:image/.+;base64,', '', ajax_string)
+    # print(image_data)  # This is the regex-ed image data
+    return image_data
+
+
+def convert_b64_to_image():
+    image_data = get_image_string()
+    # Converting base64 to image (using ref 4.)
+    decoded_image = base64.b64decode(image_data)
+    digit_input = 'digit_input.png'
+    with open(digit_input, 'wb') as f:
+        f.write(decoded_image)
+
+
+def convert_img_to_greyscale():
+    # Convert the image to greyscale
+    img = Image.open('digit_input.png').convert('L')
+    img.save('digit_input_grey.png')  # Save the greyscale image
+
+
+def fit_img_to_model():
+    # Need to match shape defined in model => 28 x 28
+    # https://dev.to/preslavrachev/python-resizing-and-fitting-an-image-to-an-exact-size-13ic
+    # To do this we need to resize the image
+    original_image = Image.open('digit_input_grey.png')
+    fit_and_resized_image = ImageOps.fit(original_image, DIM, Image.ANTIALIAS)
+    # Save resized image
+    fit_and_resized_image.save('digit-28-28.png')
+
+
+def store_as_array():
+    # Need to store image in an array
+    # Model reads them in this way
+    img = Image.open('digit-28-28.png')
+    digit_28_28_array = np.array(img).reshape(1, WIDTH, HEIGHT, 1)
+    return digit_28_28_array
 
 
 def load_saved_model():

@@ -2,95 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6a0e147-9af4-43cb-ac55-e56d29402270" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/activate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/activate.csh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/activate.fish" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/autopep8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/django-admin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/django-admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/easy_install" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/easy_install-3.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/f2py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/f2py3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/f2py3.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/freeze_graph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/iptest" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/iptest3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/ipython" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/ipython3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jsonschema" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-bundlerextension" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-console" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-kernel" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-kernelspec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-migrate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-nbconvert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-nbextension" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-notebook" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-qtconsole" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-run" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-serverextension" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-troubleshoot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/jupyter-trust" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/markdown_py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/pip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/pip3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/pip3.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/pycodestyle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/pygmentize" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/python" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/python3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/saved_model_cli" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/sqlformat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/tensorboard" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/tf_upgrade_v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/tflite_convert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/toco" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/toco_from_protos" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/bin/wheel" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/etc/jupyter/nbconfig/notebook.d/widgetsnbextension.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/lib64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/pyvenv.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/jupyter/kernels/python3/kernel.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/jupyter/kernels/python3/logo-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/jupyter/kernels/python3/logo-64x64.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/jupyter/nbextensions/jupyter-js-widgets/extension.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/jupyter/nbextensions/jupyter-js-widgets/extension.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/man/man1/ipython.1.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/CacheControl-0.11.7-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/appdirs-1.4.3-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/certifi-2018.1.18-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/chardet-3.0.4-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/colorama-0.3.7-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/distlib-0.2.6-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/distro-1.0.1-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/html5lib-0.999999999-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/idna-2.6-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/ipaddress-0.0.0-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/lockfile-0.12.2-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/packaging-17.1-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/pip-9.0.1-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/pkg_resources-0.0.0-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/progress-1.2-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/pyparsing-2.2.0-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/requests-2.18.4-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/retrying-1.3.3-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/setuptools-39.0.1-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/six-1.11.0-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/urllib3-1.22-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/webencodings-0.5-py2.py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../etp_env/share/python-wheels/wheel-0.30.0-py2.py3-none-any.whl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digit-28-28.png" beforeDir="false" afterPath="$PROJECT_DIR$/digit-28-28.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digit_input.png" beforeDir="false" afterPath="$PROJECT_DIR$/digit_input.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digit_input_grey.png" beforeDir="false" afterPath="$PROJECT_DIR$/digit_input_grey.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/model.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.json" beforeDir="false" afterPath="$PROJECT_DIR$/model.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digit-28-28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/digit_input.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/digit_input_grey.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/mnist-input.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/mnist-input.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/static/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/mnist-input.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mnist-input.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/mnist-input.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mnist-input.html" afterDir="false" />
     </list>
@@ -120,16 +37,20 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/digit_store" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -210,7 +131,7 @@
       <workItem from="1574628611652" duration="457000" />
       <workItem from="1574629345793" duration="76000" />
       <workItem from="1574629436431" duration="110000" />
-      <workItem from="1574629563187" duration="9286000" />
+      <workItem from="1574629563187" duration="14926000" />
     </task>
     <servers />
   </component>

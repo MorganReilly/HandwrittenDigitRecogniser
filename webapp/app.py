@@ -9,6 +9,7 @@
 # 5 https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
 
 # Imports
+import cv2
 from flask import Flask, render_template, request
 from keras.models import model_from_json
 import base64
@@ -22,9 +23,9 @@ print(tf.__version__)
 app = Flask(__name__)
 
 # Re-size image
-imHeight = 28
-imWidth = 28
-size = imHeight, imWidth  # image size for model
+WIDTH = 28
+HEIGHT = 28
+DIM = WIDTH, HEIGHT  # image size for model
 
 
 # Defualt route
@@ -37,6 +38,7 @@ def app_home():
 @app.route('/upload', methods=['POST'])
 def upload_digit():
     ajax_string = request.values['imageString']  # Store string that's sent from Ajax call
+
     # print(ajax_string)  # Non regex - Debugging
 
     # When the image is sent we need to remove the initial part
@@ -59,15 +61,17 @@ def upload_digit():
     # https://dev.to/preslavrachev/python-resizing-and-fitting-an-image-to-an-exact-size-13ic
     # To do this we need to resize the image
     original_image = Image.open('digit_input_grey.png')
-    fit_and_resized_image = ImageOps.fit(original_image, size, Image.ANTIALIAS)
+    fit_and_resized_image = ImageOps.fit(original_image, DIM, Image.ANTIALIAS)
 
     # Save resized image
     fit_and_resized_image.save('digit-28-28.png')
 
     # Need to store image in an array
     # MNIST reads them in this way
-    digit_28_28_array = np.array(fit_and_resized_image).reshape(1, 28, 28, 1)
+    img = Image.open('digit-28-28.png')
+    digit_28_28_array = np.array(img).reshape(1, WIDTH, HEIGHT, 1)
 
+    # Load the model from memory
     model = load_saved_model()
 
     # Need to send and receive prediction to model
@@ -94,7 +98,7 @@ def load_saved_model():
         model.load_weights("model.h5")
         print("Loaded from disk")
     except():
-        print("Model failed successfully")
+        print("Model load failed successfully!")
     finally:
         return model
 

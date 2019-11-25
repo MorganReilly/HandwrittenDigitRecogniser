@@ -1,11 +1,14 @@
 canvas {
     background-color: black;
+    border-color: greenyellow;
+    border-style: solid;
 }
 
 .center_divs {
     margin: auto;
     width: 50%;
-    padding: 10px;
-    border-color: blueviolet;
+    padding: 5px;
+    border-color: black;
     border-style: solid;
+    text-align: center;
 }

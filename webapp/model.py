@@ -4,19 +4,14 @@
 
 # Imports
 import timeit
-
 import keras
 import math
-import time
 from keras.datasets import mnist
 from keras.models import model_from_json
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D
 from keras import backend as K
 from keras.layers.normalization import BatchNormalization
-import tensorflow.compat.v1 as tf
-
-tf.disable_v2_behavior()
 
 print("Keras Version " + keras.__version__)
 

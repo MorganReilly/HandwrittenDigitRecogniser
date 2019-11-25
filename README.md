@@ -1,15 +1,24 @@
 # Emerging Technologies
 # _Handwritten Image Recognition with Keras and MNIST_
 
-## Environment Setup (Will fill this in once I have made the Requirements.txt file)
-* download requirments.txt
-* pip....
-
-## Flask Deployment
-* Activate vitual environment from previous set up
-* cd path/to/flask/app.py
+## Environment Setup => Linux
+* Download Requirements.txt
+* $ cd webapp
+* Create Virtual Environment
+* $ python3 -m venv venv
+* Populate virtual environment with pip packages
+* $ sudo venv/bin/pip3 install -r requirements.txt
+* Activate Virtual Environment
+* $ source venv/bin/activate
+* Load model
+* $ python3 model.py
+* Export Flask App
 * $ export FLASK_APP=app.py
+* Run Flask App
 * $ flask run
+
+## Environment Setup => Windows
+* TBD
 
 ### References -- Model
 * [Google Codelab tutorial](https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/index.html?index=..%2F..index#0)

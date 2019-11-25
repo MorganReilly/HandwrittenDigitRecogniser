@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6a0e147-9af4-43cb-ac55-e56d29402270" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digit-28-28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/digit_input.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/digit_input_grey.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/mnist-input.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mnist-input.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,7 +39,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -125,7 +129,7 @@
       <workItem from="1574628611652" duration="457000" />
       <workItem from="1574629345793" duration="76000" />
       <workItem from="1574629436431" duration="110000" />
-      <workItem from="1574629563187" duration="24466000" />
+      <workItem from="1574629563187" duration="29686000" />
     </task>
     <servers />
   </component>

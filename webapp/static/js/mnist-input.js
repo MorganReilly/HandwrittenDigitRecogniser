@@ -14,11 +14,19 @@ var x = "white",
     y = 10;
 
 function init() {
+    // Canvas set up
     canvas = document.getElementById('canvasMNIST');
     ctx = canvas.getContext("2d");
     w = canvas.width;
     h = canvas.height;
 
+    mouseInput();
+    screenIntervalRegulator();
+    mobileTouchInput();
+}
+
+function mouseInput() {
+    // Adapted from: http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
     canvas.addEventListener("mousemove", function (e) {
         findxy('move', e)
     }, false);
@@ -31,6 +39,55 @@ function init() {
     canvas.addEventListener("mouseout", function (e) {
         findxy('out', e)
     }, false);
+}
+
+function screenIntervalRegulator() {
+    // Adapted from: http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
+    // Regular interval for drawing to screen, smoother
+    window.requestAnimationFrame(function (callback) {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimaitonFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+    })();
+}
+
+function mobileTouchInput() {
+    // Allowing touch input
+    canvas.addEventListener("touchstart", function (e) {
+        mouse_pos = getTouchPos(canvas, e);
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent("mousedown", {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+    }, false);
+    canvas.addEventListener("touchend", function (e) {
+        var mouseEvent = new MouseEvent("mouseup", {});
+        canvas.dispatchEvent(mouseEvent);
+    }, false);
+    canvas.addEventListener("touchmove", function (e) {
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent("mousemove", {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+    }, false);
+}
+
+// Get the position of a touch relative to the canvas
+function getTouchPos(canvasDom, touchEvent) {
+    var rect = canvasDom.getBoundingClientRect();
+    return {
+        x: touchEvent.touches[0].clientX - rect.left,
+        y: touchEvent.touches[0].clientY - rect.top
+    };
 }
 
 function draw() {
@@ -46,7 +103,7 @@ function draw() {
 function erase() {
     ctx.clearRect(0, 0, w, h);
     document.getElementById("canvas_img").style.display = "none";
-    //document.getElementById("prediction").style.display = "none";
+    // document.getElementById("prediction").style.display = "none";
 }
 
 // Sending the canvas image to Flask
@@ -61,7 +118,7 @@ function send() {
         url: "/upload",
         type: "POST",
         data: {imageString: dataURL}
-    }).done(function(e){
+    }).done(function (e) {
         console.log("DONE");
         $("#prediction").empty().append(e);
     });

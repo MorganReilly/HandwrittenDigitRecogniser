@@ -46,14 +46,11 @@ def upload_digit():
     fit_img_to_model()
     # Store the image in an array with resized dimensions
     digit_28_28_array = store_as_array()
-
     # Load the model from memory
     model = load_saved_model()
-
     # Need to send and receive prediction to model
     send_prediction = model.predict(digit_28_28_array)
     receive_prediction = np.array(send_prediction[0])
-
     # Need to store the response as a String
     prediction = str(np.argmax(receive_prediction))
     print("Model Predicted: ", prediction)

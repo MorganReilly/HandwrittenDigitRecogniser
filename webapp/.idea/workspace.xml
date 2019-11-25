@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6a0e147-9af4-43cb-ac55-e56d29402270" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/static/background.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digit-28-28.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/digit_input.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/digit_input_grey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/digit-28-28.png" beforeDir="false" afterPath="$PROJECT_DIR$/digit-28-28.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digit_input.png" beforeDir="false" afterPath="$PROJECT_DIR$/digit_input.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digit_input_grey.png" beforeDir="false" afterPath="$PROJECT_DIR$/digit_input_grey.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/mnist-input.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/mnist-input.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/mnist-input.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mnist-input.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/mnist-input.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mnist-input.html" afterDir="false" />
@@ -131,7 +132,7 @@
       <workItem from="1574628611652" duration="457000" />
       <workItem from="1574629345793" duration="76000" />
       <workItem from="1574629436431" duration="110000" />
-      <workItem from="1574629563187" duration="14926000" />
+      <workItem from="1574629563187" duration="15389000" />
     </task>
     <servers />
   </component>

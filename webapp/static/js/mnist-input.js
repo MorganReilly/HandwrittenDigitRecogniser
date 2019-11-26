@@ -14,15 +14,18 @@ var x = "white",
     y = 10;
 
 function init() {
+    setUpCanvas();
+    mouseInput();
+    screenIntervalRegulator();
+    mobileTouchInput();
+}
+
+function setUpCanvas() {
     // Canvas set up
     canvas = document.getElementById('canvasMNIST');
     ctx = canvas.getContext("2d");
     w = canvas.width;
     h = canvas.height;
-
-    mouseInput();
-    screenIntervalRegulator();
-    mobileTouchInput();
 }
 
 function mouseInput() {
@@ -57,6 +60,7 @@ function screenIntervalRegulator() {
 }
 
 function mobileTouchInput() {
+    // Adapted from: http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
     // Allowing touch input
     canvas.addEventListener("touchstart", function (e) {
         mouse_pos = getTouchPos(canvas, e);
@@ -115,7 +119,7 @@ function send() {
 
     // Adapted from: https://stackoverflow.com/questions/34779799/upload-base64-image-with-ajax
     $.ajax({
-        url: "/upload",
+        url: "/predict",
         type: "POST",
         data: {imageString: dataURL}
     }).done(function (e) {

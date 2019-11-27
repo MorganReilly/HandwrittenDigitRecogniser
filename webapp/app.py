@@ -108,10 +108,13 @@ def load_saved_model():
 # Store as array && return
 def image_manipulation():
     generate_image()
-    resize_image(D_DIM, canvas_grab_img)
-    # layer_image(resized_img, background_img)
-    # enhance_image()
-    # return reshape_image()
+    convert_to_greyscale(canvas_grab_img)
+    resize_image(IMG_DIM, greyscale_img)
+    sharpen_image(resized_img, 2)
+    brighten_image(sharpened_img, 2)
+    contrast_image(brightened_img, 1)
+    img_array = reshape_image(contrasted_img, IMG_WIDTH, IMG_HEIGHT)
+    return img_array
 
 
 # -- Convert Base64 to Image [png] --
@@ -127,9 +130,9 @@ def generate_image():
     ajax_call_data = request.values['imageString']  # Store string that's sent from Ajax call
     img_encoded = re.sub('^data:image/.+;base64,', '', ajax_call_data)
     img_decoded = base64.b64decode(img_encoded)
-    digit_input = canvas_grab_img
-    with open(digit_input, 'wb') as f:
+    with open(canvas_grab_img, 'wb') as f:
         f.write(img_decoded)
+    return canvas_grab_img
 
 
 # -- Convert To Greyscale --
@@ -143,21 +146,6 @@ def convert_to_greyscale(img):
     img.save(greyscale_img)  # Save the greyscale image
 
 
-# -- Make Transparent --
-def make_transparent(img):
-    img = Image.open(img)
-    img = img.convert("RGBA")
-    data_set = img.getdata()
-    new_data = []
-    for item in data_set:
-        if item[0] == 255 and item[1] == 255 and item[2] == 255:
-            new_data.append((255, 255, 255, 0))
-        else:
-            new_data.append(item)
-    img.putdata(new_data)
-    img.save(transparent_img)
-
-
 # -- Image Fit --
 # Open canvas sent image
 # Re-Map image to dimensions 28 * 28
@@ -167,14 +155,6 @@ def resize_image(dim, img):
     img = Image.open(img)
     img = ImageOps.fit(img, dim, Image.ANTIALIAS)
     img.save(resized_img)
-
-
-# Broken -- Fix
-def layer_image(fg_img, bg_img):
-    fg = Image.open(fg_img)
-    bg = Image.open(bg_img)
-    bg.paste(bg, (10, 10), fg)
-    bg.save(layered_img)
 
 
 # -- Sharpen Image --
@@ -226,10 +206,10 @@ def contrast_image(img, c):
 # Open image to convert
 # Store as Array 28 * 28
 # Return array
-def reshape_image(img):
+def reshape_image(img, img_width, img_height):
     # Adapted from: https://www.w3resource.com/numpy/manipulation/reshape.php
     img = Image.open(img)
-    digit_28_28_array = np.array(img).reshape(1, IMG_WIDTH, IMG_HEIGHT, 1)
+    digit_28_28_array = np.array(img).reshape(1, img_width, img_height, 1)
     return digit_28_28_array
 
 

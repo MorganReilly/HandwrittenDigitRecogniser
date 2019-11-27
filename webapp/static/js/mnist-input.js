@@ -1,7 +1,13 @@
-// Image URL for POST
+//  ===  G00303598 -- Morgan Reilly  ===
+// ===  Emerging Technologies 2019  ===
+
+// References:
+// https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage
+
+// -- POST URL --
 var url = "localhost:5000/"
 
-// Canvas creation variables
+// -- Canvas Variables --
 var canvas, ctx, flag = false,
     prevX = 0,
     currX = 0,
@@ -9,10 +15,12 @@ var canvas, ctx, flag = false,
     currY = 0,
     dot_flag = false;
 
-// Draw colour and size of pen
-var x = "white",
-    y = 20;
+// -- Pen --
+// x => Colour
+// y => Thickness
+var x = "white", y = 20;
 
+// -- Initialize --
 function init() {
     setUpCanvas();
     mouseInput();
@@ -20,6 +28,7 @@ function init() {
     mobileTouchInput();
 }
 
+// -- Canvas Setup --
 function setUpCanvas() {
     // Canvas set up
     canvas = document.getElementById('canvasMNIST');
@@ -28,25 +37,27 @@ function setUpCanvas() {
     h = canvas.height;
 }
 
+// -- Mouse Input --
 function mouseInput() {
     // Adapted from: http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
     canvas.addEventListener("mousemove", function (e) {
-        findxy('move', e)
+        findXY('move', e)
     }, false);
     canvas.addEventListener("mousedown", function (e) {
-        findxy('down', e)
+        findXY('down', e)
     }, false);
     canvas.addEventListener("mouseup", function (e) {
-        findxy('up', e)
+        findXY('up', e)
     }, false);
     canvas.addEventListener("mouseout", function (e) {
-        findxy('out', e)
+        findXY('out', e)
     }, false);
 }
 
+// -- Screen Regulator --
+// Regular interval for drawing to screen, smoother
 function screenIntervalRegulator() {
     // Adapted from: http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
-    // Regular interval for drawing to screen, smoother
     window.requestAnimationFrame(function (callback) {
         return window.requestAnimationFrame ||
             window.webkitRequestAnimationFrame ||
@@ -59,9 +70,10 @@ function screenIntervalRegulator() {
     });
 }
 
+// -- Allow Touch Input --
+// Use for mobile
 function mobileTouchInput() {
     // Adapted from: http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
-    // Allowing touch input
     canvas.addEventListener("touchstart", function (e) {
         mouse_pos = getTouchPos(canvas, e);
         var touch = e.touches[0];
@@ -85,8 +97,10 @@ function mobileTouchInput() {
     }, false);
 }
 
-// Get the position of a touch relative to the canvas
+// -- Get Touch Position --
+// Use for mobile input
 function getTouchPos(canvasDom, touchEvent) {
+    // Adapted from: http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
     var rect = canvasDom.getBoundingClientRect();
     return {
         x: touchEvent.touches[0].clientX - rect.left,
@@ -94,7 +108,9 @@ function getTouchPos(canvasDom, touchEvent) {
     };
 }
 
+// -- Draw Line --
 function draw() {
+    // Adapted from: https://stackoverflow.com/a/8398189/8883485
     ctx.beginPath();
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
@@ -104,14 +120,21 @@ function draw() {
     ctx.closePath();
 }
 
+// -- Erase Canvas --
 function erase() {
+    // Adapted from: https://stackoverflow.com/a/8398189/8883485
     ctx.clearRect(0, 0, w, h);
     document.getElementById("canvas_img").style.display = "none";
     // document.getElementById("prediction").style.display = "none";
 }
 
-// Sending the canvas image to Flask
+// -- Canvas Send --
+// Grab canvas
+// Convert to dataURL
+// Print -- Verify
+// Send URL via POST with Ajax
 function send() {
+    // Adapted from: https://stackoverflow.com/a/8398189/8883485
     var canvas = document.getElementById("canvasMNIST");
     var dataURL = canvas.toDataURL();
 
@@ -128,7 +151,9 @@ function send() {
     });
 }
 
-function findxy(res, e) {
+// -- Find X / Y Position --
+function findXY(res, e) {
+    // Adapted from: https://stackoverflow.com/a/8398189/8883485
     if (res == 'down') {
         prevX = currX;
         prevY = currY;

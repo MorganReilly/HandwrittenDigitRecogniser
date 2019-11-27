@@ -1,4 +1,3 @@
-# Adapted from keras-mnist-nn.ipynb
 # G00303598 -- Morgan Reilly
 # Emerging Technologies -- 2019
 
@@ -8,14 +7,14 @@ import math
 from keras.datasets import mnist
 from keras.models import model_from_json
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D, BatchNormalization
+from keras.layers import Dense, Dropout, Flatten, Conv2D, BatchNormalization
 from keras import backend as K
 
 print("Keras Version " + keras.__version__)
 
-# Batch size =>
-# Epoch size =>
-# Class size =>
+# Batch size => Number of samples to be propagated through network [https://stats.stackexchange.com/a/153535]
+# Epoch size => Number of times all training vectors are used to update weights
+# Class size => 0 - 9 digits = 10 classes
 batch_size = 128
 epochs = 10
 num_classes = 10
@@ -69,7 +68,7 @@ print('x_train shape:', x_train.shape)
 print(x_train.shape[0], 'train samples')
 print(x_test.shape[0], 'test samples')
 
-# -- Convert Vectors to Binary Matrices --
+# -- Convert Vector to Binary Matrix --
 # Use with categorical crossentropy
 # y train / test => Vector to be converted into matrix
 # num_classes => Total number of classes
@@ -78,41 +77,75 @@ y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
 # -- Create Model --
-model = Sequential()  # New sequential model (linear stack of layers)
-
+# Adapted from: @Keras Model
+# https://colab.research.google.com/github/GoogleCloudPlatform/tensorflow-without-a-phd/blob/master/tensorflow-mnist-tutorial/keras_05_mnist_batch_norm.ipynb
+#
+# Sequential => Linear stack of layers
+# https://keras.io/getting-started/sequential-model-guide/
+#
+# Conv2D => Apply spatial convolution over images
+#   kernel_size => integer tuple/list of single integer, specifies 2D window
+#   activation => relu [Rectified Linear Unit]
+#   input_shape => 28*28 pixel image
+#   use_bias => Boolean to use bias vector
+#   padding => Applies extra pixels to image
+#   strides => New layer map will have size equal to previous layer divided by strides
+#   https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/
+#   https://keras.io/layers/convolutional/
+#
+# BatchNormalization => Address how neuron outputs are distributed to activation function
+#   center => beta offset normalized to tensor
+#   scale => Multiply by gamma
+#   https://keras.io/layers/normalization/
+#   https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/index.html?index=..%2F..index#12
+#
+# Dense => Linear operation on layers input vector
+#
+# Flatten => Flatten cube of data into vector that can be consumed by Dense layer
+#
+# Dense (Final) => Apply softmax transformation
+#   Normalizes vector: Output probability range [0-1]
+model = Sequential()
 model.add(Conv2D(12, kernel_size=(3, 3),
                  activation='relu',
                  input_shape=input_shape))
-
 model.add(Conv2D(24, (3, 3), activation='relu',
                  use_bias=False, padding='same'))
 model.add(BatchNormalization(center=True, scale=False))
 model.add(Dense(128, activation='relu'))
-
 model.add(Conv2D(36, (6, 6), activation='relu',
                  use_bias=False, padding='same', strides=2))
 model.add(BatchNormalization(center=True, scale=False))
 model.add(Dense(128, activation='relu'))
-
 model.add(Conv2D(48, (6, 6), activation='relu',
                  use_bias=False, padding='same', strides=2))
 model.add(BatchNormalization(center=True, scale=False))
 model.add(Dense(128, activation='relu'))
-
 model.add(Flatten())
-
 model.add(Dense(200, use_bias=False))
 model.add(BatchNormalization(center=True, scale=False))
 model.add(Dense(128, activation='relu'))
-
 model.add(Dropout(0.3))
 model.add(Dense(num_classes, activation='softmax'))
+
 # -- Compile Model --
-#
-# print model layers
+# Optimizer:
+#   Adam => Method for Stochastic Optimization https://arxiv.org/abs/1412.6980v8
+# Loss:
+#   One of two parameters required to compile a model
+#   categorical_crossentropy => https://keras.io/losses/
+# Metrics:
+#   https://keras.io/metrics/
+#   Function used to judge performance of model
+#   accuracy => Tensor value representing mean of output array across all data-points
+# Print model layers
 model.compile(optimizer=keras.optimizers.Adam(lr=0.01),
               loss='categorical_crossentropy',
               metrics=['accuracy'])
+
+# -- Summarise Model --
+# Displays model info
+# https://keras.io/models/about-keras-models/
 model.summary()
 
 
@@ -136,10 +169,8 @@ def learningrate_decay(epoch):
 #
 # Otherwise do:
 # Print failure message && subsequent response
-# Start timer
 # Set Learning rate callback
 # Train new model && store
-# End timer => Display model generation duration
 # Serialize to JSON [Architecture]
 # Write file
 # Save model [Weights & Biases]

@@ -16,17 +16,11 @@ app = Flask(__name__)
 IMG_WIDTH, IMG_HEIGHT = 28, 28
 IMG_DIM = IMG_WIDTH, IMG_HEIGHT
 
-# -- Digit Dimensions --
-D_WIDTH, D_HEIGHT = 20, 20
-D_DIM = D_WIDTH, D_HEIGHT
-
 # -- Image Manipulation --
+# Store all image paths here
 canvas_grab_img = 'img_manipulation/canvas_grab.png'
 greyscale_img = 'img_manipulation/greyscale_img.png'
-transparent_img = 'img_manipulation/transparent_img.png'
 resized_img = 'img_manipulation/resized_img.png'
-background_img = 'img_manipulation/black-28-28.png'
-layered_img = 'img_manipulation/layered_img.png'
 sharpened_img = 'img_manipulation/sharpened_img.png'
 brightened_img = 'img_manipulation/brightened_img.png'
 contrasted_img = 'img_manipulation/contrasted_img.png'
@@ -99,12 +93,10 @@ def load_saved_model():
 
 
 # -- Manipulate Image --
-# Call to set decoded image
-# Call to decode image
-# Return base64 value
-# Reconstruct image and convert to greyscale
+# Generate the image [Encode && Decode]
+# Convert to greyscale
 # Reshape greyscale image to size 28px * 28px && save
-# Enhance image && save
+# Apply enhancements
 # Store as array && return
 def image_manipulation():
     generate_image()
@@ -140,7 +132,6 @@ def generate_image():
 # Convert to greyscale
 # Save image
 def convert_to_greyscale(img):
-    # Want to make transparent
     # Adapted from: https://stackoverflow.com/a/12201744/8883485
     img = Image.open(img).convert('L')
     img.save(greyscale_img)  # Save the greyscale image
@@ -148,7 +139,7 @@ def convert_to_greyscale(img):
 
 # -- Image Fit --
 # Open canvas sent image
-# Re-Map image to dimensions 28 * 28
+# Re-Map image to dimensions
 # Save image
 def resize_image(dim, img):
     # Adapted from: https://dev.to/preslavrachev/python-resizing-and-fitting-an-image-to-an-exact-size-13ic

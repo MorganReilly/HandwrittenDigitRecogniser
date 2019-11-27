@@ -13,9 +13,23 @@ from PIL import Image, ImageOps, ImageEnhance
 app = Flask(__name__)
 
 # -- Image Dimensions --
-WIDTH = 28
-HEIGHT = 28
-DIM = WIDTH, HEIGHT
+IMG_WIDTH, IMG_HEIGHT = 28, 28
+IMG_DIM = IMG_WIDTH, IMG_HEIGHT
+
+# -- Digit Dimensions --
+D_WIDTH, D_HEIGHT = 20, 20
+D_DIM = D_WIDTH, D_HEIGHT
+
+# -- Image Manipulation --
+canvas_grab_img = 'img_manipulation/canvas_grab.png'
+greyscale_img = 'img_manipulation/greyscale_img.png'
+transparent_img = 'img_manipulation/transparent_img.png'
+resized_img = 'img_manipulation/resized_img.png'
+background_img = 'img_manipulation/black-28-28.png'
+layered_img = 'img_manipulation/layered_img.png'
+sharpened_img = 'img_manipulation/sharpened_img.png'
+brightened_img = 'img_manipulation/brightened_img.png'
+contrasted_img = 'img_manipulation/contrasted_img.png'
 
 
 # -- App Home --
@@ -75,7 +89,6 @@ def load_saved_model():
         loaded_json_model = json_to_open.read()
         json_to_open.close()
         model = model_from_json(loaded_json_model)
-
         # Load weights into new model
         model.load_weights("model.h5")
         print("Loaded from disk")
@@ -94,9 +107,11 @@ def load_saved_model():
 # Enhance image && save
 # Store as array && return
 def image_manipulation():
-    decode_image()
-    enhance_image()
-    return reshape_image()
+    generate_image()
+    resize_image(D_DIM, canvas_grab_img)
+    # layer_image(resized_img, background_img)
+    # enhance_image()
+    # return reshape_image()
 
 
 # -- Convert Base64 to Image [png] --
@@ -104,77 +119,62 @@ def image_manipulation():
 # Re-generate image from base64 image URL
 # Store generated image
 # Write generate image
-def decode_image():
-    img_encoded = encode_image()
-    img_decoded = base64.b64decode(img_encoded)
-    digit_input = 'img_manipulation/digit_input.png'
-    with open(digit_input, 'wb') as f:
-        f.write(img_decoded)
-
-
-# -- Encode Image to Base64 --
-# Store POST value from Ajax call
-# Cut base64 from String with Regex
-# Return encoded image data
-def encode_image():
+def generate_image():
     # Adapted from:
     # https://stackoverflow.com/a/41256900/8883485
     # https://stackoverflow.com/a/31410635/8883485
     # https://stackoverflow.com/questions/16214190/how-to-convert-base64-string-to-image
     ajax_call_data = request.values['imageString']  # Store string that's sent from Ajax call
     img_encoded = re.sub('^data:image/.+;base64,', '', ajax_call_data)
-    return img_encoded
-
-
-# -- Enhances Image --
-# Sharpen Image
-# Brighten Image
-# Contrast Image
-def enhance_image():
-    convert_to_greyscale()
-    resize_image()
-    sharpen_image()
-    brighten_image()
-    contrast_image()
+    img_decoded = base64.b64decode(img_encoded)
+    digit_input = canvas_grab_img
+    with open(digit_input, 'wb') as f:
+        f.write(img_decoded)
 
 
 # -- Convert To Greyscale --
 # Open image to convert
 # Convert to greyscale
 # Save image
-def convert_to_greyscale():
+def convert_to_greyscale(img):
     # Want to make transparent
     # Adapted from: https://stackoverflow.com/a/12201744/8883485
-    img = Image.open('img_manipulation/digit_input.png').convert('L')
-    img.save('img_manipulation/digit_input_grey.png')  # Save the greyscale image
+    img = Image.open(img).convert('L')
+    img.save(greyscale_img)  # Save the greyscale image
 
 
 # -- Make Transparent --
-def make_transparent():
-    img = Image.open('img.png')
+def make_transparent(img):
+    img = Image.open(img)
     img = img.convert("RGBA")
-    datas = img.getdata()
-
-    newData = []
-    for item in datas:
+    data_set = img.getdata()
+    new_data = []
+    for item in data_set:
         if item[0] == 255 and item[1] == 255 and item[2] == 255:
-            newData.append((255, 255, 255, 0))
+            new_data.append((255, 255, 255, 0))
         else:
-            newData.append(item)
-
-    img.putdata(newData)
-    img.save("img2.png", "PNG")
+            new_data.append(item)
+    img.putdata(new_data)
+    img.save(transparent_img)
 
 
 # -- Image Fit --
 # Open canvas sent image
 # Re-Map image to dimensions 28 * 28
 # Save image
-def resize_image():
+def resize_image(dim, img):
     # Adapted from: https://dev.to/preslavrachev/python-resizing-and-fitting-an-image-to-an-exact-size-13ic
-    original_image = Image.open('img_manipulation/digit_input_grey.png')
-    fit_and_resized_image = ImageOps.fit(original_image, DIM, Image.ANTIALIAS)
-    fit_and_resized_image.save('img_manipulation/digit-28-28.png')
+    img = Image.open(img)
+    img = ImageOps.fit(img, dim, Image.ANTIALIAS)
+    img.save(resized_img)
+
+
+# Broken -- Fix
+def layer_image(fg_img, bg_img):
+    fg = Image.open(fg_img)
+    bg = Image.open(bg_img)
+    bg.paste(bg, (10, 10), fg)
+    bg.save(layered_img)
 
 
 # -- Sharpen Image --
@@ -183,13 +183,13 @@ def resize_image():
 # Set sharpen
 # Enhance with sharpen
 # Save image
-def sharpen_image():
+def sharpen_image(img, s):
     # Adapted from: https://dev.to/petercour/enhance-image-with-python-pil-222e
-    img = Image.open('img_manipulation/digit-28-28.png')
+    img = Image.open(img)
     img = ImageEnhance.Sharpness(img)
-    sharpness = 2
-    sharp_img = img.enhance(sharpness)
-    sharp_img.save('img_manipulation/sharp_img.png')  # Save the greyscale image
+    sharpness = s
+    img = img.enhance(sharpness)
+    img.save(sharpened_img)  # Save the greyscale image
 
 
 # -- Brighten image --
@@ -198,13 +198,13 @@ def sharpen_image():
 # Set brighten
 # Enhance with brighten
 # Save image
-def brighten_image():
+def brighten_image(img, b):
     # Adapted from: https://dev.to/petercour/enhance-image-with-python-pil-222e
-    img = Image.open('img_manipulation/sharp_img.png')
+    img = Image.open(img)
     img = ImageEnhance.Brightness(img)
-    brightness = 1.0
-    brightened_img = img.enhance(brightness)
-    brightened_img.save('img_manipulation/bright_img.png')
+    brightness = b
+    img = img.enhance(brightness)
+    img.save(brightened_img)
 
 
 # -- Contrast image --
@@ -213,23 +213,23 @@ def brighten_image():
 # Set contrast
 # Enhance with contrast
 # Save image
-def contrast_image():
+def contrast_image(img, c):
     # Adapted from: https://dev.to/petercour/enhance-image-with-python-pil-222e
-    img = Image.open('img_manipulation/bright_img.png')
+    img = Image.open(img)
     img = ImageEnhance.Contrast(img)
-    contrast = 1.0
-    contrast_img = img.enhance(contrast)
-    contrast_img.save('img_manipulation/28-28.png')
+    contrast = c
+    img = img.enhance(contrast)
+    img.save(contrasted_img)
 
 
 # -- Reshape Image --
 # Open image to convert
 # Store as Array 28 * 28
 # Return array
-def reshape_image():
+def reshape_image(img):
     # Adapted from: https://www.w3resource.com/numpy/manipulation/reshape.php
-    img = Image.open('img_manipulation/28-28.png')
-    digit_28_28_array = np.array(img).reshape(1, WIDTH, HEIGHT, 1)
+    img = Image.open(img)
+    digit_28_28_array = np.array(img).reshape(1, IMG_WIDTH, IMG_HEIGHT, 1)
     return digit_28_28_array
 
 

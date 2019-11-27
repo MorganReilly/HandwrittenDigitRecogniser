@@ -11,7 +11,7 @@ var canvas, ctx, flag = false,
 
 // Draw colour and size of pen
 var x = "white",
-    y = 10;
+    y = 20;
 
 function init() {
     setUpCanvas();

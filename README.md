@@ -1,15 +1,16 @@
 # Emerging Technologies
 # _Handwritten Image Recognition with Keras and MNIST_
 
-## Environment Setup => Linux
+## Environment Setup -- Linux (Using Python 3.6 | Pip Virtual Environment)
 * Download Requirements.txt
-* $ cd webapp
 * Create Virtual Environment
 * $ python3 -m venv venv
 * Populate virtual environment with pip packages
-* $ sudo venv/bin/pip3 install -r requirements.txt
+* $ venv/bin/pip3 install -r Requirements.txt
 * Activate Virtual Environment
 * $ source venv/bin/activate
+
+### Flask Deployment -- Linux
 * Load model
 * $ python3 model.py
 * Export Flask App
@@ -17,8 +18,23 @@
 * Run Flask App
 * $ flask run
 
-## Environment Setup => Windows
-* TBD
+## Environment Setup -- Windows (Using Anaconda 3.7 | Conda Virtual Evironment)
+Note: Tested deployment with Virtual Environment, no luck. Anaconda works as a fine substitute.
+* Create Conda Environment
+* $ conda create --name venv
+* Activate Conda Environment
+* $ conda activate
+* Download nesseccary packages
+* $ conda install -c anaconda flask
+* $ conda install -c conda-forge keras
+
+### Flask Deployment -- Windows
+* Load model
+* $ python model.py
+* Export Flask App
+* $ set FLASK_APP=app.py
+* Run Flask App
+* $ flask run
 
 ### References -- Model
 * [Google Codelab tutorial](https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/index.html?index=..%2F..index#0)
@@ -38,8 +54,8 @@
 * https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
 * https://dev.to/preslavrachev/python-resizing-and-fitting-an-image-to-an-exact-size-13ic
 
-#### References -- EC2 AWS Hosting -- http://34.245.207.140:8080/
-Note: The code for this part of the project is hosted on the AWS instance. It contains a slightly modified base to allow for touch and a redesign of the home page to avoid scrolling issues. It also contains nginx and gunicorn3. Nginx handles the static files and Gunuicorn3 creates unix sockets and allows flask to talk to nginx. 
+#### References -- EC2 AWS Hosting -- Link To Be Updated (Currently under maintenence)
+Note:To host this on AWS I needed 2 things, Nginx and Gunicorn. Nginx handles the static files and Gunuicorn3 creates unix sockets and allows flask to talk to nginx. 
 
 * https://www.youtube.com/watch?v=-Gc8CMjQZfc
 * https://www.youtube.com/watch?v=IwcuuWCWMic

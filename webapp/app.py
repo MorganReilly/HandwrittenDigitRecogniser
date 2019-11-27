@@ -131,7 +131,7 @@ def encode_image():
 # Brighten Image
 # Contrast Image
 def enhance_image():
-    convert_image()
+    convert_to_greyscale()
     resize_image()
     sharpen_image()
     brighten_image()
@@ -142,10 +142,28 @@ def enhance_image():
 # Open image to convert
 # Convert to greyscale
 # Save image
-def convert_image():
+def convert_to_greyscale():
+    # Want to make transparent
     # Adapted from: https://stackoverflow.com/a/12201744/8883485
     img = Image.open('img_manipulation/digit_input.png').convert('L')
     img.save('img_manipulation/digit_input_grey.png')  # Save the greyscale image
+
+
+# -- Make Transparent --
+def make_transparent():
+    img = Image.open('img.png')
+    img = img.convert("RGBA")
+    datas = img.getdata()
+
+    newData = []
+    for item in datas:
+        if item[0] == 255 and item[1] == 255 and item[2] == 255:
+            newData.append((255, 255, 255, 0))
+        else:
+            newData.append(item)
+
+    img.putdata(newData)
+    img.save("img2.png", "PNG")
 
 
 # -- Image Fit --

@@ -68,6 +68,8 @@ def model_manipulation(img_reshape):
     model = load_saved_model()
     send_prediction = model.predict(img_reshape)
     receive_prediction = np.array(send_prediction[0])
+    chart_data = np.array(send_prediction)
+    print("LOOKATTHIS: ", chart_data)
     predicted_num = str(np.argmax(receive_prediction))
     return predicted_num
 

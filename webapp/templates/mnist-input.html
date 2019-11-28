@@ -4,52 +4,67 @@
     References:
         * https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial
         * https://stackoverflow.com/questions/2368784/draw-on-html5-canvas-using-a-mouse
+        * https://getbootstrap.com/docs/4.4/getting-started/introduction/
 -->
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>DIGIT RECOGNISER</title>
 
     <!-- Links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+          integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mnist-input.css') }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
 <body onload="init()">
+
 <!-- Title -->
-<div id="title" class="center_divs">
+<div class="jumbotron text-center">
     <h1>DIGIT RECOGNISER</h1>
     <h2>MNIST | KERAS</h2>
+    <h3>Please Draw A Digit On The Canvas</h3>
+    <h4> 0 - 9</h4>
 </div>
 
+<div class="container">
+    <div class="row">
+        <!-- Text Fields -->
+        <div class="col-sm-4">
+            <h2>Prediction: </h2>
+            <h2 id="prediction">Num</h2>
+        </div>
+        <!-- Buttons -->
+        <div class="form-group">
+            <button type="button" class="btn btn-info" id="clr" onclick="erase()">Erase Canvas</button>
+            <form method="POST">
+                <button type="button" class="btn btn-info" id="publish" onclick="send()">Make Prediction</button>
+            </form>
+        </div>
+    </div>
+</div>
 <!-- Canvas -->
-<div id="canvas" class="center_divs">
-    <canvas id="canvasMNIST" width="400" , height="400"></canvas>
-    <img id="canvas_img">
-</div>
-
-<!-- Buttons -->
-<div id="buttons" class="center_divs">
-    <button type="button" class="btn btn-info" id="clr" onclick="erase()">Erase Canvas</button>
-    <form method="POST">
-        <button type="button" class="btn btn-info" id="publish" onclick="send()">Make Prediction</button>
-    </form>
-</div>
-
-<!-- Prediction -->
-<div class="center_divs" align="horizontal">
-    <div><h2>Prediction: </h2></div>
-    <div><h2 id="prediction"></h2></div>
+<div class="canvas">
+    <canvas id="canvasMNIST" width="200" , height="200">
+        Sorry, this browser does not support &lt;canvas&gt; element.
+    </canvas>
+    <img id="canvasMNIST">
 </div>
 
 </body>
 
-<!-- Scripts -->
+<!-- Java Script -->
 <script type="text/javascript" src="{{ url_for('static', filename='js/mnist-input.js') }}"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"
+        integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P"
+        crossorigin="anonymous"></script>
 </html>

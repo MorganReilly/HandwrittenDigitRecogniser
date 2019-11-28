@@ -19,16 +19,20 @@
 * $ flask run
 
 ## Environment Setup -- Windows (Using Anaconda 3.7 | Conda Virtual Evironment)
-Note: Tested deployment with Virtual Environment, no luck. Anaconda works as a fine substitute.
+NOTE: Please run CMDER as Administrator, or conda commands will not run correctly. (Ignore if already set up).
 * Create Conda Environment
 * $ conda create --name venv
 * Activate Conda Environment
-* $ conda activate
+* $ conda activate venv
 * Download nesseccary packages
-* $ conda install -c anaconda flask
-* $ conda install -c conda-forge keras
+* $ conda install -c anaconda flask -y
+* $ conda install -c conda-forge tensorflow
+* $ conda install -c conda-forge keras -y
+* $ conda install -c anaconda pillow
 
 ### Flask Deployment -- Windows
+* Locate clone and change directory to webapp
+* $ cd path/to/webapp
 * Load model
 * $ python model.py
 * Export Flask App
@@ -46,7 +50,6 @@ Note: Tested deployment with Virtual Environment, no luck. Anaconda works as a f
 * https://www.kaggle.com/cdeotte/how-to-choose-cnn-architecture-mnist
 
 ### References -- Webapp
-* Human Activity Recognition Comparitive - Jamie O' Halloran (Thesis - Unpublished but can show on request)
 * https://www.base64encoder.io/python/
 * https://stackoverflow.com/questions/41256733/regex-to-extract-multiple-base64-encoded-image-from-string
 * https://stackoverflow.com/questions/31410525/base64-uri-to-png-python

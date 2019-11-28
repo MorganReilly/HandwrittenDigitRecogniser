@@ -1,6 +1,5 @@
 //  ===  G00303598 -- Morgan Reilly  ===
 // ===  Emerging Technologies 2019  ===
-
 // References:
 // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage
 
@@ -18,7 +17,7 @@ var canvas, ctx, flag = false,
 // -- Pen --
 // x => Colour
 // y => Thickness
-var x = "white", y = 20;
+var x = "white", y = 10;
 
 // -- Initialize --
 function init() {

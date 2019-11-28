@@ -2,57 +2,62 @@ canvas {
     background-color: black;
     border-color: greenyellow;
     border-style: solid;
-    margin: 10%;
 }
 
 .container {
     border-color: blue;
     border-style: dashed;
+    padding: 2%;
+
 }
 
 .canvas {
+    /*
     border-color: red;
     border-style: solid;
-    margin-left: 3%;
-    margin-right: 3%;
-}
-
-#body_div {
-    background-color: grey;
+     */
 }
 
 #info {
-    border-color: red;
-    border-style: solid;
     width: 60%;
     float: left;
     text-align: center;
 }
 
-#input {
-    border-color: orange;
-    border-style: solid;
-    width: 40%;
-    float: right;
-    text-align: right;
+footer {
+    margin-top: 3%;
+    background-color: lightgray;
 }
 
-#predict_button {
-    border-color: yellow;
-    border-style: solid;
-    width: 50%;
-    float: right;
-    text-align: right;
-}
-
-#erase_button {
+.form-group {
     border-color: green;
     border-style: solid;
-    width: 50%;
-    float: left;
-    text-align: left;
+    margin-left: 7%;
+    margin-top: 2%;
+    padding: 3%;
+    text-align: center;
 }
 
 .selector-for-some-widget {
     box-sizing: content-box;
+}
+
+.erase_button{
+    /*
+    border-color: red;
+    border-style: solid;
+     */
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-bottom: 5%;
+}
+
+.submit_button{
+    /*
+    border-color: red;
+    border-style: solid;
+     */
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-top: 30%;
 }

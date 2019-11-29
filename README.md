@@ -2,11 +2,11 @@
 # _Handwritten Image Recognition with Keras and MNIST_
 
 ## Environment Setup -- Linux (Using Python 3.6 | Pip Virtual Environment)
-* Download Requirements.txt
+* Download requirements.txt
 * Create Virtual Environment
 * $ python3 -m venv venv
 * Populate virtual environment with pip packages
-* $ venv/bin/pip3 install -r Requirements.txt
+* $ venv/bin/pip3 install -r requirements.txt
 * Activate Virtual Environment
 * $ source venv/bin/activate
 

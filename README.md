@@ -43,8 +43,7 @@ NOTE: Please run CMDER as Administrator, or conda commands will not run correctl
 * `$ flask run`
 
 ## About The Model
-The model I used is a Sequentail CNN with 16 layers. It has an accuracy of 99.40% and a loss of 0.0191%.
-[Model](keras-mnist-nn.ipynb)
+The [Model](keras-mnist-nn.ipynb) I used is a Sequential CNN with 16 layers. It has an accuracy of 99.40% and a loss of 0.0191%.
 
 ### References -- Model
 To condense this README into a more read-able format all references are with their respective code in both [Flask App](webapp) and [Jupyter Notebook](keras-mnist-nn.ipynb)

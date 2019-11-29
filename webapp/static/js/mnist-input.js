@@ -124,7 +124,7 @@ function erase() {
     // Adapted from: https://stackoverflow.com/a/8398189/8883485
     ctx.clearRect(0, 0, w, h);
     document.getElementById("canvas_img").style.display = "none";
-    // document.getElementById("prediction").style.display = "none";
+    document.getElementById("something").innerHTML = "new text";
 }
 
 // -- Canvas Send --

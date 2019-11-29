@@ -32,13 +32,16 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <!-- Text Fields -->
-        <div class="col-sm-4">
-            <h2>Prediction: </h2>
-            <h2 id="prediction">Num</h2>
-        </div>
 
+    <div class="row">
+        <div class="col-sm-1 col-centered">
+            <!-- Text Fields -->
+            <h2>Prediction: </h2>
+            <h2 id="prediction">~</h2>
+        </div>
+    </div>
+
+    <div class="row">
         <!-- Canvas -->
         <div class="canvas">
             <canvas id="canvasMNIST" width="200" , height="200">
@@ -46,24 +49,21 @@
             </canvas>
             <img id="canvasMNIST">
         </div>
+
         <!-- Buttons -->
         <div class="form-group">
             <div class="erase_button">
-                <button type="button" class="btn btn-info" id="clr" onclick="erase()">Erase Canvas!</button>
+                <button type="button" class="btn btn-primary" id="clr" onclick="erase()">Erase Canvas!</button>
             </div>
             <div class="submit_button">
                 <form method="POST">
-                    <button type="button" class="btn btn-info" id="publish" onclick="send()">Predict Value!</button>
+                    <button type="button" class="btn btn-primary" id="publish" onclick="send()">Predict Value!
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<footer class="page-footer font-small blue pt-4">
-
-</footer>
-
-
 </body>
 
 <!-- Java Script -->

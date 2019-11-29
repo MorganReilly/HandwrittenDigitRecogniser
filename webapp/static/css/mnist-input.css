@@ -1,3 +1,7 @@
+body {
+    background-image: url("background.png");
+}
+
 canvas {
     background-color: black;
     border-color: greenyellow;
@@ -5,10 +9,11 @@ canvas {
 }
 
 .container {
-    border-color: blue;
+    padding-bottom: 5%;
+    border-color: black;
     border-style: dashed;
-    padding: 2%;
-
+    background-color: white;
+    margin-bottom: 5%;
 }
 
 .canvas {
@@ -16,48 +21,51 @@ canvas {
     border-color: red;
     border-style: solid;
      */
-}
-
-#info {
-    width: 60%;
-    float: left;
     text-align: center;
+    margin-left: 40%;
 }
 
 footer {
-    margin-top: 3%;
     background-color: lightgray;
-}
-
-.form-group {
-    border-color: green;
-    border-style: solid;
-    margin-left: 7%;
-    margin-top: 2%;
-    padding: 3%;
-    text-align: center;
 }
 
 .selector-for-some-widget {
     box-sizing: content-box;
 }
 
-.erase_button{
+.submit_button {
     /*
     border-color: red;
     border-style: solid;
      */
-    padding-top: 5%;
-    padding-bottom: 5%;
-    margin-bottom: 5%;
+    margin-top: 3%;
 }
 
-.submit_button{
-    /*
-    border-color: red;
-    border-style: solid;
-     */
-    padding-top: 5%;
-    padding-bottom: 5%;
-    margin-top: 30%;
+/*This is modifying the btn-primary colors but you could create your own .btn-something class as well*/
+.btn-primary {
+    color: #fff;
+    background-color: #0495c9;
+    border-color: #357ebd; /*set the color you want here*/
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #00b3db;
+    border-color: #285e8e; /*set the color you want here*/
+}
+
+.row {
+    /*border-color: red;
+    border-style: solid;*/
+    text-align: center;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align: center;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
 }

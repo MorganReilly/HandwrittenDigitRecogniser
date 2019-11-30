@@ -3,11 +3,8 @@
 // References:
 // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage
 
-// -- POST URL --
-var url = "localhost:5000/"
-
 // -- Canvas Variables --
-var canvas, ctx, flag = false,
+let canvas, ctx, flag = false,
     prevX = 0,
     currX = 0,
     prevY = 0,
@@ -17,7 +14,12 @@ var canvas, ctx, flag = false,
 // -- Pen --
 // x => Colour
 // y => Thickness
-var x = "white", y = 10;
+let x = "white", y = 10;
+
+// -- Canvas --
+// w => Width
+// h => Height
+let w, h, mouse_pos;
 
 // -- Initialize --
 function init() {
@@ -75,8 +77,8 @@ function mobileTouchInput() {
     // Adapted from: http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
     canvas.addEventListener("touchstart", function (e) {
         mouse_pos = getTouchPos(canvas, e);
-        var touch = e.touches[0];
-        var mouseEvent = new MouseEvent("mousedown", {
+        let touch = e.touches[0];
+        let mouseEvent = new MouseEvent("mousedown", {
             clientX: touch.clientX,
             clientY: touch.clientY
         });
@@ -100,7 +102,7 @@ function mobileTouchInput() {
 // Use for mobile input
 function getTouchPos(canvasDom, touchEvent) {
     // Adapted from: http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
-    var rect = canvasDom.getBoundingClientRect();
+    let rect = canvasDom.getBoundingClientRect();
     return {
         x: touchEvent.touches[0].clientX - rect.left,
         y: touchEvent.touches[0].clientY - rect.top
@@ -134,8 +136,8 @@ function erase() {
 // Send URL via POST with Ajax
 function send() {
     // Adapted from: https://stackoverflow.com/a/8398189/8883485
-    var canvas = document.getElementById("canvasMNIST");
-    var dataURL = canvas.toDataURL();
+    let canvas = document.getElementById("canvasMNIST");
+    let dataURL = canvas.toDataURL();
 
     console.log("Data URL: " + dataURL);
 

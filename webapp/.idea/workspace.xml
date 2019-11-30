@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6a0e147-9af4-43cb-ac55-e56d29402270" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_manipulation/brightened_img.png" beforeDir="false" afterPath="$PROJECT_DIR$/img_manipulation/brightened_img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_manipulation/canvas_grab.png" beforeDir="false" afterPath="$PROJECT_DIR$/img_manipulation/canvas_grab.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_manipulation/contrasted_img.png" beforeDir="false" afterPath="$PROJECT_DIR$/img_manipulation/contrasted_img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_manipulation/greyscale_img.png" beforeDir="false" afterPath="$PROJECT_DIR$/img_manipulation/greyscale_img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_manipulation/resized_img.png" beforeDir="false" afterPath="$PROJECT_DIR$/img_manipulation/resized_img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_manipulation/sharpened_img.png" beforeDir="false" afterPath="$PROJECT_DIR$/img_manipulation/sharpened_img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/mnist-input.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mnist-input.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +134,7 @@
       <workItem from="1574629436431" duration="110000" />
       <workItem from="1574629563187" duration="100589000" />
       <workItem from="1574913315207" duration="1278000" />
-      <workItem from="1574951346617" duration="13311000" />
+      <workItem from="1574951346617" duration="20741000" />
     </task>
     <servers />
   </component>

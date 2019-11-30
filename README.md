@@ -1,7 +1,7 @@
 # Emerging Technologies
 # _Handwritten Image Recognition with Keras and MNIST_
 
-![logo](images/keras.png) ![mnist](images/mnist.png)
+![logo](images/keras.png) ![mnist](images/mnist.png) ![flask](images/flask.png)
 
 ## Environment Setup -- Linux (Using Python 3.6 | Pip Virtual Environment)
 * Download requirements.txt

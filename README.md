@@ -1,5 +1,5 @@
 # Emerging Technologies
-# _Handwritten Image Recognition with Keras and MNIST_
+# _Handwritten Image Recognition with Keras and MNIST, Hosted with Flask_
 
 ![logo](images/keras.png) ![mnist](images/mnist.png) ![flask](images/flask.png)
 

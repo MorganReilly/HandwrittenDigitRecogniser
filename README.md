@@ -48,8 +48,9 @@ The [Model](keras-mnist-nn.ipynb) I used is a Sequential CNN with 16 layers. It 
 ### References -- Model
 To condense this README into a more read-able format all references are with their respective code in both [Flask App](webapp) and [Jupyter Notebook](keras-mnist-nn.ipynb)
 
-#### References -- EC2 AWS Hosting -- Link To Be Updated (Currently under maintenence)
-Note:To host this on AWS I needed 2 things, Nginx and Gunicorn. Nginx handles the static files and Gunuicorn3 creates unix sockets and allows flask to talk to nginx. 
+#### References -- EC2 AWS Hosting -- (Link Available on Request)
+Note:To host this on AWS I needed 2 things, Nginx and Gunicorn. Nginx handles the static files and Gunuicorn3 creates unix sockets and allows flask to talk to nginx.
+I added this part only to see if I could get it running on mobile. However, the site is poorly optimized and I don't have the time to fix it. 
 
 * [Tutorial 1](https://www.youtube.com/watch?v=-Gc8CMjQZfc)
 * [Tutorial 2](https://www.youtube.com/watch?v=IwcuuWCWMic)
